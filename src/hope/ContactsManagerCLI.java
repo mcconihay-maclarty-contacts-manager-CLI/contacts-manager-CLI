@@ -3,6 +3,11 @@ package hope;
 import hope.Contact;
 import util.Input;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class ContactsManagerCLI {
 	public static void main(String[] args) {
 		Contact contact = new Contact("dog", "Cat");
@@ -44,27 +49,35 @@ public class ContactsManagerCLI {
 
 
 
-//		//		Directory path
-//		String directory = "./src/data";
-//		Path dataDirectory = Paths.get(directory);
-//
-//// 		File path
-//		String filename = "groceryList.text";
-//
-////		Combine them
-//		Path dataFile = Paths.get(directory, filename);
-//		System.out.println(dataFile);
-//
-////		Creating the Directory
+		//		Directory path
+		String directory = "./src/data";
+		Path dataDirectory = Paths.get(directory);
+
+// 		File path
+		String filename = "contactInfo.text";
+
+//		Combine them
+		Path dataFile = Paths.get(directory, filename);
+		System.out.println(dataFile);
+
+//		Creating the Directory
 //		if(Files.notExists(dataDirectory)){
-//			Files.createDirectory(dataDirectory);
+//			try {
+//				Files.createDirectory(dataDirectory);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
 //		}
-////		Creating the File
-//		if(Files.notExists(dataFile)){
-//			Files.createFile(dataFile);
+//		Creating the File
+		if(Files.notExists(dataFile)){
+			try {
+				Files.createFile(dataFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 //		}
 	}
-}
+}}
 
 
 
