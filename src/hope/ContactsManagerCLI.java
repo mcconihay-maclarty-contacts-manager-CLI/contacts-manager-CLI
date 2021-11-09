@@ -7,11 +7,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class ContactsManagerCLI {
 	public static void main(String[] args) {
-		Contact contact = new Contact("dog", "Cat");
-		System.out.println(contact);
+//		Contact contact = new Contact("dog", "Cat");
+//		contact = new HashMap<String, String>();
+		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
+		System.out.println(contactList);
 
 		boolean confirm = true;
 		do {
@@ -30,7 +36,7 @@ public class ContactsManagerCLI {
 //						}
 					break;
 				case 2:
-					System.out.println(contact.getContact());
+					System.out.println(contactList);
 					break;
 				case 3:
 
@@ -69,14 +75,14 @@ public class ContactsManagerCLI {
 //			}
 //		}
 //		Creating the File
-		if(Files.notExists(dataFile)){
-			try {
-				Files.createFile(dataFile);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-//		}
-	}
+//		if(Files.notExists(dataFile)){
+//			try {
+//				Files.createFile(dataFile);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+////		}
+//	}
 }}
 
 
