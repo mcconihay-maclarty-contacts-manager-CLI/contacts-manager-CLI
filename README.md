@@ -1,1 +1,1 @@
-# contacts-manager-CLI
+# contacts-manager-hope.CLI
