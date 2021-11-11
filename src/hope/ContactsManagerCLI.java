@@ -27,7 +27,7 @@ public class ContactsManagerCLI {
 							"\n3 - Search a contact by name" +
 							"\n4 - Delete an existing contact" +
 							"\n5 - Exit" +
-							"\n\n Please select a number option:");
+							"\n\n Please select a number option:\n");
 			switch (option) {
 				case 1:
 					cli.allContacts();
@@ -48,13 +48,14 @@ public class ContactsManagerCLI {
 
 					break;
 				case 5:
-
+					System.out.println("Are you sure");
 					break;
 				default:
 					break;
 			}
 			confirm = new Input().yesNo("Return to main menu? [y/N]");
 		} while (confirm);
+		System.out.println("...Goodbye");
 
 
 
@@ -67,7 +68,7 @@ public class ContactsManagerCLI {
 
 //		Combine them
 		Path dataFile = Paths.get(directory, filename);
-		System.out.println(dataFile);
+//		System.out.println(dataFile);
 
 //		Creating the Directory
 //		if(Files.notExists(dataDirectory)){
@@ -86,6 +87,7 @@ public class ContactsManagerCLI {
 //			}
 ////		}
 //	}
+//		https://www.youtube.com/watch?v=ScUJx4aWRi0
 }}
 
 

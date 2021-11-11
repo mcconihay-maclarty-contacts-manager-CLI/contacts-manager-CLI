@@ -36,6 +36,8 @@ public class CLI {
 
 	}
 
+
+
 //addContact takes in two separate strings so the user has to enter both in separate scanners.
 //	the FileWriter is using a relative path anf is set to true, allowing Filewriter to append instead of overwriting.
 //	newLine causes the next writer to write on a new line
@@ -45,8 +47,9 @@ public class CLI {
 		try{
 			BufferedWriter writer = new BufferedWriter(new FileWriter("contactInfo.text", true));
 			writer.write(name);
-			writer.newLine();
+			writer.write(" | ");
 			writer.write(number);
+			writer.write(" |");
 			writer.newLine();
 			writer.close();
 		}catch (IOException e){
@@ -54,9 +57,14 @@ public class CLI {
 		}
 	}
 
+
+
+//	Maybe delete by index and add a number that increments
 	public void deleteContact(String number) {
 
 	}
+
+
 
 //	searchByName is similar to the method allContacts but with an if statement that uses a ROOT or empty string method
 //	with the contains method to locate your search in the textfile.
@@ -73,8 +81,5 @@ public class CLI {
 			e.printStackTrace();
 		}
 	}
-
-
-
 
 }
