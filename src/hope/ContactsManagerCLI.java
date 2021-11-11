@@ -13,8 +13,8 @@ public class ContactsManagerCLI {
 	public static void main(String[] args) {
 //		Contact contact = new Contact("dog", "Cat");
 //		contact = new HashMap<String, String>();
-		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
-		System.out.println(contactList);
+//		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
+//		System.out.println(contactList);
 
 		boolean confirm = true;
 		Scanner scanner = new Scanner(System.in).useDelimiter("\n");;
