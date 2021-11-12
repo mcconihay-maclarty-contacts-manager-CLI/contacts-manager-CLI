@@ -7,51 +7,55 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class ContactsManagerCLI {
 	public static void main(String[] args) {
 //		Contact contact = new Contact("dog", "Cat");
 //		contact = new HashMap<String, String>();
-		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
-		System.out.println(contactList);
+//		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
+//		System.out.println(contactList);
 
 		boolean confirm = true;
+		Scanner scanner = new Scanner(System.in).useDelimiter("\n");;
+		CLI cli	= new CLI();
 		do {
-			Input scanner = new Input();
-			int option = scanner.getInt(
+			Input scan = new Input();
+			int option = scan.getInt(
 					"\n1 - View contacts" +
 							"\n2 - Add a new contact" +
 							"\n3 - Search a contact by name" +
 							"\n4 - Delete an existing contact" +
 							"\n5 - Exit" +
-							"\n\n Please select a number option:");
+							"\n\n Please select a number option:\n");
 			switch (option) {
 				case 1:
-//						for (Contacts contact : allContacts) {
-//							System.out.println("Name: " + contact.getName() + " Number: " + contact.getNumber());
-//						}
+					cli.allContacts();
 					break;
 				case 2:
-					System.out.println(contactList);
+					System.out.print("Enter new contact name: ");
+					String newContact = scanner.next();
+					System.out.print("Enter new contact number: ");
+					String newNumber = scanner.next();
+					cli.addContact(newContact, newNumber);
 					break;
 				case 3:
-
+					System.out.println("Enter contact name you wish to search: ");
+					String searchContact = scanner.next();
+					cli.searchByName(searchContact);
 					break;
 				case 4:
 
 					break;
 				case 5:
-
+					System.out.println("Are you sure");
 					break;
 				default:
 					break;
 			}
 			confirm = new Input().yesNo("Return to main menu? [y/N]");
 		} while (confirm);
+		System.out.println("...Goodbye");
 
 
 
@@ -64,7 +68,7 @@ public class ContactsManagerCLI {
 
 //		Combine them
 		Path dataFile = Paths.get(directory, filename);
-		System.out.println(dataFile);
+//		System.out.println(dataFile);
 
 //		Creating the Directory
 //		if(Files.notExists(dataDirectory)){
@@ -83,6 +87,7 @@ public class ContactsManagerCLI {
 //			}
 ////		}
 //	}
+//		https://www.youtube.com/watch?v=ScUJx4aWRi0
 }}
 
 

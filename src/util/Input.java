@@ -16,8 +16,14 @@ public class Input {
 	}
 
 
-	public int getInt(int min, int max){
-		return scanner.nextInt();
+	public int getInt(String prompt, int min, int max){
+		try{
+			System.out.println(prompt);
+			return Integer.parseInt(getString());
+		} catch(NumberFormatException nfe) {
+			System.err.println("invalid input");
+			return getInt(prompt);
+		}
 	}
 
 	public int getInt(String prompt){
