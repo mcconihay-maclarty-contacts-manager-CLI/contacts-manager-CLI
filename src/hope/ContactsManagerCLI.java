@@ -1,6 +1,5 @@
 package hope;
 
-import hope.Contact;
 import util.Input;
 
 import java.io.IOException;
@@ -10,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class ContactsManagerCLI {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 //		Contact contact = new Contact("dog", "Cat");
 //		contact = new HashMap<String, String>();
 //		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
@@ -45,7 +44,9 @@ public class ContactsManagerCLI {
 					cli.searchByName(searchContact);
 					break;
 				case 4:
-
+					System.out.println("Enter a contact name you wish to delete:");
+					String delete = scanner.next();
+					cli.deleteContact(delete);
 					break;
 				case 5:
 					System.out.println("Are you sure");
@@ -64,7 +65,7 @@ public class ContactsManagerCLI {
 		Path dataDirectory = Paths.get(directory);
 
 // 		File path
-		String filename = "contactInfo.text";
+		String filename = "myTempFile.txt";
 
 //		Combine them
 		Path dataFile = Paths.get(directory, filename);

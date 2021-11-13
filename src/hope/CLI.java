@@ -1,8 +1,7 @@
 package hope;
 
-import util.Input;
-
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Locale;
@@ -13,11 +12,11 @@ public class CLI {
 	Path dataDirectory = Paths.get(directory);
 
 	// 		File path
-	String filename = "contactInfo.text";
-
+	String filename = "./src/data/contactInfo.text";
+	String fileTemp = "myTempFile.txt";
 	//		Combine them
 	Path dataFile = Paths.get(directory, filename);
-
+	Path dataTempFile = Paths.get(directory, fileTemp);
 
 
 //	allContacts uses a reader to use a relative path to the text file contactInfo. Once in the file
@@ -25,7 +24,7 @@ public class CLI {
 //	After it finishes reading it will print the text to the terminal.
 	public void allContacts(){
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("contactInfo.text"));
+			BufferedReader reader = new BufferedReader(new FileReader("./src/data/contactInfo.text"));
 			String line;
 			while((line = reader.readLine()) != null){
 				System.out.println(line);
@@ -45,7 +44,7 @@ public class CLI {
 	public void addContact(String name, String number) {
 
 		try{
-			BufferedWriter writer = new BufferedWriter(new FileWriter("contactInfo.text", true));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("./src/data/contactInfo.text", true));
 			writer.write(name);
 			writer.write(" | ");
 			writer.write(number);
@@ -61,18 +60,22 @@ public class CLI {
 
 //	Maybe delete by index and add a number that increments
 	public void deleteContact(String lineToRemove) throws IOException {
-		File inputFile = new File("contactInfo.text");
-		File tempFile = new File("myTempFile.txt");
 
-		BufferedReader reader = new BufferedReader(new FileReader("contactInfo.text"));
-		BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+		File inputFile = new File("./src/data/contactInfo.text");
+		File tempFile = new File("./src/data/myTempFile.txt");
+
+		BufferedReader reader = new BufferedReader(new FileReader("./src/data/contactInfo.text"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter("./src/data/myTempFile.txt"));
 
 		String Line;
 
 		while((Line = reader.readLine()) != null) {
-			String trimmedLine = Line.trim();
-			if(trimmedLine.equals(lineToRemove)) continue;
-			writer.write(Line + System.getProperty("line.separator"));
+			if(!Line.toLowerCase(Locale.ROOT).contains(lineToRemove.toLowerCase(Locale.ROOT))){
+//				what is locale, ROOT,
+				writer.write(Line + System.getProperty("line.separator"));
+//				getProp and line.separator
+			}
 		}
 		writer.close();
 		reader.close();
@@ -85,7 +88,7 @@ public class CLI {
 //	with the contains method to locate your search in the textfile.
 	public void searchByName(String name) {
 		try {
-			BufferedReader reader = new BufferedReader(new FileReader("contactInfo.text"));
+			BufferedReader reader = new BufferedReader(new FileReader("./src/data/contactInfo.text"));
 			String line;
 			while((line = reader.readLine()) != null){
 				if(line.toLowerCase(Locale.ROOT).contains(name.toLowerCase(Locale.ROOT))) {
