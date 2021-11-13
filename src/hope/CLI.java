@@ -60,8 +60,23 @@ public class CLI {
 
 
 //	Maybe delete by index and add a number that increments
-	public void deleteContact(String number) {
+	public void deleteContact(String lineToRemove) throws IOException {
+		File inputFile = new File("contactInfo.text");
+		File tempFile = new File("myTempFile.txt");
 
+		BufferedReader reader = new BufferedReader(new FileReader("contactInfo.text"));
+		BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+		String Line;
+
+		while((Line = reader.readLine()) != null) {
+			String trimmedLine = Line.trim();
+			if(trimmedLine.equals(lineToRemove)) continue;
+			writer.write(Line + System.getProperty("line.separator"));
+		}
+		writer.close();
+		reader.close();
+		boolean successful = tempFile.renameTo(inputFile);
 	}
 
 
@@ -83,3 +98,8 @@ public class CLI {
 	}
 
 }
+
+//---Name---|----Number----|
+//		Bob Vance | 909-090-9090 |
+//		Lost Boys | 909-999-0000 |
+//		Joe Wallace | 909-505-3939 |
