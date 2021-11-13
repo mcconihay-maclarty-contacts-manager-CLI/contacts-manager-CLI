@@ -60,9 +60,27 @@ public class CLI {
 
 
 //	Maybe delete by index and add a number that increments
-	public void deleteContact(String number) {
+//	public void deleteContact(String number) {
+//
+//	}
+public void deleteContactByName(String name) throws IOException {
+	BufferedReader reader = new BufferedReader(new FileReader("contactInfo.text"));
 
+	String s = "Bob"; // cant get the deleteContact to be used here
+	String line;
+	while ((line = reader.readLine()) != null) {
+		if (line.contains(s)){
+			System.out.println(line + "is found already");
+			System.out.println("Would you like to delete this contact?");
+			BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+
+			String answer = input.readLine();
+			if (answer.equalsIgnoreCase("yes")) {
+				System.out.println("hi"); // just seeing if it works here // need to remove contact here
+			}
+		}
 	}
+}
 
 
 

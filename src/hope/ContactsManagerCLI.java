@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 public class ContactsManagerCLI {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 //		Contact contact = new Contact("dog", "Cat");
 //		contact = new HashMap<String, String>();
 //		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
@@ -45,7 +45,9 @@ public class ContactsManagerCLI {
 					cli.searchByName(searchContact);
 					break;
 				case 4:
-
+					System.out.println("Enter contact name you wish to delete ");
+					String deleteContact = scanner.next();
+					cli.deleteContactByName(deleteContact);
 					break;
 				case 5:
 					System.out.println("Are you sure");
