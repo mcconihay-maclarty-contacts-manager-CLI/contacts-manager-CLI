@@ -65,24 +65,28 @@ public class CLI {
 
 
 //	Maybe delete by index and add a number that increments
-	public void deleteContact(String lineToRemove) throws IOException {
+	public void deleteContact(String lineToRemove) {
+		try {
+			File inputFile = new File("./src/data/contactInfo.text");
+			File tempFile = new File("./src/data/myTempFile.txt");
 
-		File inputFile = new File("./src/data/contactInfo.text");
-		File tempFile = new File("./src/data/myTempFile.txt");
+			BufferedReader reader = new BufferedReader(new FileReader("./src/data/contactInfo.text"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("./src/data/myTempFile.txt"));
 
-		BufferedReader reader = new BufferedReader(new FileReader("./src/data/contactInfo.text"));
-		BufferedWriter writer = new BufferedWriter(new FileWriter("./src/data/myTempFile.txt"));
+			String Line;
 
-		String Line;
-
-		while((Line = reader.readLine()) != null) {
-			if(!Line.toLowerCase().contains(lineToRemove.toLowerCase())){
-				writer.write(Line + System.getProperty("line.separator"));
+			while ((Line = reader.readLine()) != null) {
+				if (!Line.toLowerCase().contains(lineToRemove.toLowerCase())) {
+					writer.write(Line + System.getProperty("line.separator"));
 				}
 			}
 			writer.close();
 			reader.close();
 			boolean successful = tempFile.renameTo(inputFile);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 
