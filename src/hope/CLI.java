@@ -1,10 +1,10 @@
 package hope;
 
 import java.io.*;
-import java.nio.file.Files;
+import java.nio.file.Files; //Remove
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Locale;
+import java.util.Locale; //Remove
 
 public class CLI {
 
@@ -77,9 +77,7 @@ public class CLI {
 
 		while((Line = reader.readLine()) != null) {
 			if(!Line.toLowerCase().contains(lineToRemove.toLowerCase())){
-//				what is locale, ROOT,
 				writer.write(Line + System.getProperty("line.separator"));
-//				getProp and line.separator
 				}
 			}
 			writer.close();

@@ -3,18 +3,19 @@ package hope;
 import util.Input;
 
 import java.io.IOException;
-import java.nio.file.Files;
+import java.nio.file.Files; //Remove
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
 public class ContactsManagerCLI {
 	public static void main(String[] args) throws IOException {
+//		Remove
 //		Contact contact = new Contact("dog", "Cat");
 //		contact = new HashMap<String, String>();
 //		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
 //		System.out.println(contactList);
-
+//		endRemove
 		boolean confirm = true;
 		Scanner scanner = new Scanner(System.in).useDelimiter("\n");;
 		CLI cli	= new CLI();
@@ -22,11 +23,11 @@ public class ContactsManagerCLI {
 			Input scan = new Input();
 			int option = scan.getInt(
 					"\n1 - View contacts" +
-							"\n2 - Add a new contact" +
-							"\n3 - Search a contact by name" +
-							"\n4 - Delete an existing contact" +
+							"\n2 - Add new contact" +
+							"\n3 - Search contact by name" +
+							"\n4 - Delete existing contact" +
 							"\n5 - Exit" +
-							"\n\n Please select a number option:\n");
+							"\n\nPlease select a number option:");
 			switch (option) {
 				case 1:
 					cli.allContacts();
@@ -39,12 +40,12 @@ public class ContactsManagerCLI {
 					cli.addContact(newContact, newNumber);
 					break;
 				case 3:
-					System.out.println("Enter contact name you wish to search: ");
+					System.out.println("Enter contact name to search: ");
 					String searchContact = scanner.next();
 					cli.searchByName(searchContact);
 					break;
 				case 4:
-					System.out.println("Enter a contact name you wish to delete:");
+					System.out.println("Enter contact name to delete:");
 					String delete = scanner.next();
 					cli.deleteContact(delete);
 					break;
@@ -59,7 +60,7 @@ public class ContactsManagerCLI {
 		System.out.println("...Goodbye");
 
 
-
+//		Remove
 		//		Directory path
 		String directory = "./src/data";
 		Path dataDirectory = Paths.get(directory);
@@ -88,6 +89,8 @@ public class ContactsManagerCLI {
 //			}
 ////		}
 //	}
+		//		endRemove
+
 //		https://www.youtube.com/watch?v=ScUJx4aWRi0
 }}
 
