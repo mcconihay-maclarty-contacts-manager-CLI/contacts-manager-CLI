@@ -1,10 +1,8 @@
 package hope;
 
 import java.io.*;
-import java.nio.file.Files; //Remove
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Locale; //Remove
 
 public class CLI {
 
@@ -17,6 +15,7 @@ public class CLI {
 	//		Combine them
 	Path dataFile = Paths.get(directory, filename);
 	Path dataTempFile = Paths.get(directory, fileTemp);
+
 //BufferedWriter is a subclass to writer
 //	BufferedWriter writes text to character output stream, buffering characters so as to provide for the efficient writing of single characters, arrays, and strings.
 
@@ -41,12 +40,11 @@ public class CLI {
 
 	}
 
-
-
 //addContact takes in two separate strings so the user has to enter both in separate scanners.
 //	the FileWriter is using a relative path and is set to true, allowing Filewriter to append instead of overwriting.
 //	newLine causes the next writer to write on a new line
 //	when using a writer you have to use .close inorder for the function to finish
+
 	public void addContact(String name, String number) {
 
 		try{
@@ -62,9 +60,8 @@ public class CLI {
 		}
 	}
 
-
-
 //	Maybe delete by index and add a number that increments
+
 	public void deleteContact(String lineToRemove) {
 		try {
 			File inputFile = new File("./src/data/contactInfo.text");
@@ -89,10 +86,9 @@ public class CLI {
 		}
 	}
 
-
-
 //	searchByName is similar to the method allContacts but with an if statement that uses a ROOT or empty string method
 //	with the contains method to locate your search in the textfile.
+
 	public void searchByName(String name) {
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader("./src/data/contactInfo.text"));
@@ -102,11 +98,8 @@ public class CLI {
 					System.out.println(line);
 				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-	}
-
 }
-
-
