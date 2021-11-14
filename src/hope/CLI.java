@@ -45,6 +45,7 @@ public class CLI {
 //	newLine causes the next writer to write on a new line
 //	when using a writer you have to use .close inorder for the function to finish
 
+
 	public void addContact(String name, String number) {
 
 		try{
@@ -62,7 +63,7 @@ public class CLI {
 
 //	Maybe delete by index and add a number that increments
 
-	public void deleteContact(String lineToRemove) {
+	public void deleteContact(String contactToRemove) {
 		try {
 			File inputFile = new File("./src/data/contactInfo.text");
 			File tempFile = new File("./src/data/myTempFile.txt");
@@ -72,9 +73,11 @@ public class CLI {
 
 			String Line;
 
+			//need break so that when it compiles it overrides the format correctly
+
 			while ((Line = reader.readLine()) != null) {
-				if (!Line.toLowerCase().contains(lineToRemove.toLowerCase())) {
-					writer.write(Line + System.getProperty("line.separator"));
+				if (!Line.toLowerCase().contains(contactToRemove.toLowerCase())) {
+					writer.write(Line + "\n"); // The line separator isn't always \n, e.g. on windows it is \r\n. But aside from that, System.lineSeparator(); does absolutely nothing.
 				}
 			}
 			writer.close();
