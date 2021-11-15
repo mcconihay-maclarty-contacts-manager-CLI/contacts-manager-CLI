@@ -1,21 +1,10 @@
 package hope;
 
 import util.Input;
-
-import java.io.IOException;
-import java.nio.file.Files; //Remove
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class ContactsManagerCLI {
-	public static void main(String[] args) throws IOException {
-//		Remove
-//		Contact contact = new Contact("dog", "Cat");
-//		contact = new HashMap<String, String>();
-//		List<String> contactList = Arrays.asList("Destiney | 2031234567", "Ian | 2105551234");
-//		System.out.println(contactList);
-//		endRemove
+	public static void main(String[] args) {
 		boolean confirm = true;
 		Scanner scanner = new Scanner(System.in).useDelimiter("\n");;
 		CLI cli	= new CLI();
@@ -58,38 +47,6 @@ public class ContactsManagerCLI {
 			confirm = new Input().yesNo("Return to main menu? [y/N]");
 		} while (confirm);
 		System.out.println("...Goodbye");
-
-
-//		Remove
-		//		Directory path
-		String directory = "./src/data";
-		Path dataDirectory = Paths.get(directory);
-
-// 		File path
-		String filename = "myTempFile.txt";
-
-//		Combine them
-		Path dataFile = Paths.get(directory, filename);
-//		System.out.println(dataFile);
-
-//		Creating the Directory
-//		if(Files.notExists(dataDirectory)){
-//			try {
-//				Files.createDirectory(dataDirectory);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		Creating the File
-//		if(Files.notExists(dataFile)){
-//			try {
-//				Files.createFile(dataFile);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-////		}
-//	}
-		//		endRemove
 
 //		https://www.youtube.com/watch?v=ScUJx4aWRi0
 }}
